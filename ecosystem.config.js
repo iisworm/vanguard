@@ -7,4 +7,4 @@ module.exports = [{
   watch: true,
   ignore_watch: 'node_modules',
 
-}]
+}];

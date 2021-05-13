@@ -1,8 +1,8 @@
-const label = "bot.js";
+const label = 'bot.js';
 const logger = require('./loghandle');
 logger.info({
     label: label,
-    message: "Init start"
+    message: 'Init start'
 });
 require('dotenv').config();
 const fs = require('fs');
@@ -28,14 +28,14 @@ for (const file of modCommandFiles) {
 
 client.on('ready', () => {
     client.user.setStatus('online');
-    client.user.setActivity('beep boops', { type: "LISTENING" });
+    client.user.setActivity('beep boops', { type: 'LISTENING' });
     logger.info({
         label: label,
         message: `${client.user.tag} logged in.`
     });
     client.guilds.cache.forEach(guild => {
         connection.query(
-            `SELECT cmdPrefix, botChannel, adminBotChannel, modLogID FROM GuildConfig WHERE guildID = ?`, [guild.id]).then(result => {
+            'SELECT cmdPrefix, botChannel, adminBotChannel, modLogID FROM GuildConfig WHERE guildID = ?', [guild.id]).then(result => {
                 guildPrefix.set(guild.id, result[0][0].cmdPrefix);
                 channels.push(result[0][0].botChannel);
                 channels.push(result[0][0].adminBotChannel);
@@ -104,7 +104,7 @@ client.on('message', msg => {
 
         if (now < expirationTime) {
             const timeLeft = (expirationTime - now) / 1000;
-            return msg.reply(`Please wait ${timeLeft.toFixed(1)} more second(s) before reusing ${command.name}.`)
+            return msg.reply(`Please wait ${timeLeft.toFixed(1)} more second(s) before reusing ${command.name}.`);
         }
     }
 
